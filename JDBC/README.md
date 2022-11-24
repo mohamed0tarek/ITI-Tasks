@@ -15,9 +15,9 @@ This project has simple implementaion for JDBC. It connectS Database `mydb.emplo
 * GET ALL INFO.
 
 **JDBC** has main interfaces such as :
-1. Driver : Establish a connection to a Database.
-2. Connection : Sends commands to a Database.
-3. PreparedStatement : Executes a SQL query.
-4. CallableStatement : Executes commands stored in Database.
-5. ResultSet : Reads the results of the query.
+1. **Driver :** Establish a connection to a Database.
+2. **Connection :** Sends commands to a Database.
+3. **PreparedStatement :** Executes a SQL query.
+4. **CallableStatement :** Executes commands stored in Database.
+5. **ResultSet :** Reads the results of the query.
 
