@@ -10,9 +10,10 @@ import java.sql.SQLException;
 
 public class Operations {
 
-
+    SingletoneConnection getConnection = null;
+    
     public boolean insertEmp(Employee emp) throws SQLException {
-        SingletoneConnection getConnection = SingletoneConnection.getInstance();
+        getConnection = SingletoneConnection.getInstance();
         try (Connection conn = getConnection.startConnection();
              PreparedStatement ps = conn.prepareStatement("INSERT INTO mydb.employee VALUES(?,?,?)")) {
             ps.setInt(1, emp.id());
@@ -24,7 +25,7 @@ public class Operations {
     }
 
     public boolean deleteEmp(Employee emp) throws SQLException {
-        SingletoneConnection getConnection = SingletoneConnection.getInstance();
+        getConnection = SingletoneConnection.getInstance();
         try (Connection conn = getConnection.startConnection();
              PreparedStatement ps = conn.prepareStatement("delete from mydb.employee where id=?")) {
             ps.setInt(1, emp.id());
@@ -34,7 +35,7 @@ public class Operations {
     }
 
     public boolean updateEmp(Employee emp, String newName, int newPhoneNumber) throws SQLException {
-        SingletoneConnection getConnection = SingletoneConnection.getInstance();
+        getConnection = SingletoneConnection.getInstance();
         try (Connection conn = getConnection.startConnection();
              PreparedStatement ps = conn.prepareStatement("UPDATE mydb.employee set name=?,phoneNumber=? WHERE id=?")) {
             ps.setInt(3, emp.id());
@@ -46,7 +47,7 @@ public class Operations {
     }
 
     public boolean searchEmp(int id) throws SQLException {
-        SingletoneConnection getConnection = SingletoneConnection.getInstance();
+        getConnection = SingletoneConnection.getInstance();
         try (Connection conn = getConnection.startConnection();
              PreparedStatement ps = conn.prepareStatement("SELECT * FROM mydb.employee WHERE id=" + id);
              ResultSet rs = ps.executeQuery()) {
@@ -58,7 +59,7 @@ public class Operations {
     }
 
     public boolean getAllInfo() throws SQLException {
-        SingletoneConnection getConnection = SingletoneConnection.getInstance();
+        getConnection = SingletoneConnection.getInstance();
         try (Connection conn = getConnection.startConnection();
              PreparedStatement ps = conn.prepareStatement("SELECT * FROM mydb.employee");
              ResultSet rs = ps.executeQuery()) {
